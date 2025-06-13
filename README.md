@@ -1,7 +1,7 @@
 # FuturoDAO
 FuturoDAO Proof of Concept
 
-@Problem Statement
+#Problem Statement
 
 Traditional DAO governance models often suffer from short-term decision-making and misaligned incentives. Participants can vote on proposals and immediately sell their governance tokens, escaping the long-term consequences of poor decisions. This creates a lack of accountability and undermines the DAO's ability to make sustainable, impactful choices. Additionally, existing futarchy-based systems, while innovative, often lack mechanisms to align participants with long-term protocol performance.
 
