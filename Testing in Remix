@@ -1,0 +1,29 @@
+Deployment Order:
+- Deploy mock USDC token
+- Deploy FTR governance token
+- Deploy PriceOracle (set initial price)
+- Deploy FuturoGovernance (link all contracts)
+
+Test Scenario
+// 1. Fund accounts with FTR and USDC
+ftrToken.transfer(voter1, 1000);
+usdc.transfer(governance, 1000);
+
+// 2. Create proposal
+governance.createProposal("Fund new incubator");
+
+// 3. Vote
+governance.vote(1, true, 300); // Voter1 for
+governance.vote(1, false, 200); // Voter2 against
+
+// 4. Execute after voting ends
+governance.executeProposal(1);
+
+// 5. Claim options
+governance.claimOptions(1); // Voter1 claims
+
+// 6. After 1 year...
+oracle.updatePrice(160); // 60% price increase
+options.exercise(); // Claim payout 
+
+ 
