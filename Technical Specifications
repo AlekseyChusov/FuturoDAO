@@ -1,0 +1,53 @@
+Core Components
+1. PriceOracle (Mock):
+- Provides TWAP (Time-Weighted Average Price) for governance token
+- updatePrice() for testing price changes (replace with Pyth Network in production)
+
+2.BinaryOption:
+- ERC20 token representing European-style options
+- Pays 1:1 in USDC if token price > strike at expiry
+- Auto-exercisable after expiration date
+
+3.FuturoGovernance:
+- Manages DAO proposals and voting
+- Issues binary options instead of returning locked tokens
+- Integrates with oracle for strike price calculation
+
+Workflow
+1.Proposal Creation:
+- Any user creates proposals with description
+- 7-day voting window starts immediately
+
+2.Voting
+- Users lock FTR tokens to vote for/against proposals
+- Tokens remain locked until proposal execution
+
+3.Execution:
+After voting ends:
+- Calculate strike price (current TWAP + 50%)
+- Deploy options contract
+- Fund contract with USDC (1:1 to locked tokens)
+
+4.Option Distribution:
+- Voters claim options proportional to locked tokens
+- Options expire after 1 year
+
+5.Exercise:
+- After expiration, option holders automatically exercise if in-the-money
+- Receive USDC payout if token price > strike
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
